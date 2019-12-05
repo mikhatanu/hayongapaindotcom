@@ -2,8 +2,8 @@
     session_start();
     require_once("connect.php");
     if(isset($_POST['username'])){
-        $Username = htmlentities($_POST["username"]);
-        $Password = htmlentities($_POST["password"]);
+        $Username = htmlentities($_POST["username"],ENT_QUOTES);
+        $Password = htmlentities($_POST["password"],ENT_QUOTES);
         $resultusername = $con->query("SELECT * FROM datalogin WHERE username = '$Username' and password = '$Password'");
         $count = mysqli_num_rows($resultusername);
         if($count == 1){
