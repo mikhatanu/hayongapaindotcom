@@ -2,8 +2,11 @@
 <?php
     require_once("Dologin.php");
     session_start();
-    $_SESSION['token']=uniqid(rand,true);
-    $_SESSION['token_expire']=time()+10;
+    if(!isset($_SESSION['token'])){
+        $_SESSION['token']=uniqid(bin2hex(rand(64)),true);
+        $_SESSION['token_expire']=time()+10;
+    }
+    
 
 ?>
 <html lang="en">
@@ -31,6 +34,7 @@
             Username: <input type="text" name="username" placeholder="Username">
             Password: <input type="password" name="password" placeholder="Password"><br>
             <input type="submit" value="Login">
+            <input type = "hidden" name = "token_csrf" value = <?= $_SESSION['token'] ?> >
             <a href="register.php">Don't Have Account ? Register Now!</a>
         </form>
     <?php } ?>
