@@ -1,9 +1,8 @@
 <!DOCTYPE html>
 <?php
-    require_once("Dologin.php");
     session_start();
     if(!isset($_SESSION['token'])){
-        $_SESSION['token']=uniqid(bin2hex(rand(64)),true);
+        $_SESSION['token']=uniqid(bin2hex(rand()),true);
         $_SESSION['token_expire']=time()+10;
     }
     

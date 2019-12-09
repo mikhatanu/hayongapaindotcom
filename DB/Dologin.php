@@ -12,7 +12,7 @@
         header("Location: index.php");
     }
     if(isset($_POST['token_csrf']) == $token){
-        if(isset($_POST['username'] && $_SESSION['token'])){
+        if(isset($_POST['username'])){
         $Username = htmlentities($_POST["username"]);
         $Password = htmlentities($_POST["password"]);
         $resultusername = $con->query("SELECT * FROM datalogin WHERE username = '$Username' and password = '$Password'");
