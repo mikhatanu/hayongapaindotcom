@@ -1,6 +1,10 @@
 <!DOCTYPE html>
 <?php
     require_once("Dologin.php");
+    session_start();
+    $_SESSION['token']=uniqid(rand,true);
+    $_SESSION['token_expire']=time()+10;
+
 ?>
 <html lang="en">
 <head>

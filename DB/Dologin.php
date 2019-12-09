@@ -1,6 +1,7 @@
 <?php
     session_start();
     require_once("connect.php");
+    
     if(isset($_POST['username'])){
         $Username = htmlentities($_POST["username"]);
         $Password = htmlentities($_POST["password"]);
@@ -8,6 +9,7 @@
         $count = mysqli_num_rows($resultusername);
         if($count == 1){
             $_SESSION['Username'] = $Username;
+            session_regenerate_id();
             header("Location: index.php");
         }
         else{
